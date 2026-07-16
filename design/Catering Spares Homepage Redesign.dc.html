@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<style>
+  body { margin:0; background:#eef0f2; }
+  a { color:#1c6fb0; text-decoration:none; }
+  a:hover { color:#2c86cf; }
+  @media (max-width:760px) {
+    .cs-util-msg { display:none !important; }
+    .cs-util-bar { padding:8px 16px !important; gap:10px !important; }
+    .cs-header { padding:16px 16px !important; flex-wrap:wrap !important; gap:12px !important; }
+    .cs-header-actions { gap:16px !important; }
+    .cs-phone-label { display:none !important; }
+    .cs-nav { padding:10px 16px !important; overflow-x:auto !important; }
+    .cs-nav-links { gap:16px !important; }
+    .cs-nav-links a { font-size:11px !important; white-space:nowrap !important; }
+    .cs-hero { min-height:520px !important; }
+    .cs-hero-slide { padding:36px 20px !important; }
+    .cs-hero-content { max-width:100% !important; }
+    .cs-hero-heading { font-size:22px !important; margin-bottom:18px !important; }
+    .cs-hero-arrow { display:none !important; }
+    .cs-seo { padding:36px 20px 32px !important; }
+    .cs-seo h1 { font-size:21px !important; }
+    .cs-seo p { font-size:13.5px !important; }
+    .cs-cat-grid { grid-template-columns:1fr !important; }
+    .cs-cat-tile { min-height:180px !important; padding:32px 24px !important; }
+    .cs-blog-grid { grid-template-columns:1fr !important; padding:32px 20px !important; }
+    .cs-info-grid { grid-template-columns:1fr !important; padding:36px 20px !important; gap:32px !important; }
+    .cs-footer-grid { grid-template-columns:1fr !important; padding:36px 20px 20px !important; gap:28px !important; }
+    .cs-bottom-bar { padding:18px 20px !important; }
+    .cs-nav-links { display:none !important; }
+    .cs-nav-burger { display:flex !important; }
+  }
+  .cs-nav-burger { display:none; }
+</style>
+</helmet>
+
+<div style="font-family:Arial, Helvetica, sans-serif; background:#eef0f2;">
+<div style="max-width:1440px; margin:0 auto; background:#ffffff; box-shadow:0 0 40px rgba(20,23,26,0.08);">
+
+  <!-- ================= UTILITY BAR ================= -->
+  <div class="cs-util-bar" style="background:#ffffff; border-bottom:1px solid #e2e5e8; padding:9px 40px; display:flex; align-items:center; justify-content:space-between; font-size:12px;">
+    <div style="display:flex; gap:20px;">
+      <sc-for list="{{ utilityLinks }}" as="l" hint-placeholder-count="6">
+        <a href="{{ l.href }}" style="color:#5b636b; font-size:12px;">{{ l.label }}</a>
+      </sc-for>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <span class="cs-util-msg" style="color:#9aa2aa;">Welcome to our online store!</span>
+      <a href="#" style="color:#0f3a5f; font-weight:700;">Log in →</a>
+    </div>
+  </div>
+
+  <!-- ================= HEADER ================= -->
+  <div class="cs-header" style="background:#14171a; padding:22px 40px; display:flex; align-items:center; justify-content:space-between;">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:40px; height:40px; border:2px solid #2c86cf; border-radius:8px; display:flex; align-items:center; justify-content:center; flex:none;">
+        <span style="color:#2c86cf; font-size:17px; font-weight:700;">CS</span>
+      </div>
+      <div style="line-height:1.15;">
+        <div style="color:#ffffff; font-size:20px; font-weight:700; letter-spacing:1.4px;">CATERING<span style="color:#2c86cf;">SPARES</span></div>
+        <div style="color:#78828c; font-size:10px; letter-spacing:2.2px; margin-top:2px;">GENUINE &amp; REPLACEMENT PARTS</div>
+      </div>
+    </div>
+    <div class="cs-header-actions" style="display:flex; align-items:center; gap:32px;">
+      <a href="tel:+61401511115" style="color:#ffffff; font-size:16px; font-weight:700; display:flex; align-items:center; gap:8px;">☎ <span class="cs-phone-label">0401 511 115</span></a>
+      <div style="display:flex; align-items:center; gap:8px; color:#ffffff; font-size:14px; font-weight:600;">
+        <div style="position:relative;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4"></circle><circle cx="19" cy="21" r="1.4"></circle><path d="M2 3h2l2.6 12.6a2 2 0 002 1.6h9a2 2 0 002-1.9L21 7H6"></path></svg>
+          <span style="position:absolute; top:-7px; right:-9px; background:#2c86cf; color:#fff; font-size:9.5px; font-weight:700; width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center;">0</span>
+        </div>
+        <span>CART</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= NAV ================= -->
+  <div class="cs-nav" style="background:#1b1e22; padding:13px 40px; display:flex; align-items:center; justify-content:space-between;">
+    <div class="cs-nav-links" style="display:flex; align-items:center; gap:26px;">
+      <sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="4">
+        <a href="{{ n.href }}" style="color:#c7ccd1; font-size:12px; font-weight:700; letter-spacing:1px;">{{ n.label }}</a>
+      </sc-for>
+    </div>
+    <div style="display:flex; align-items:center; gap:18px;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c7ccd1" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+      <button class="cs-nav-burger" onclick="{{ toggleMenu }}" aria-label="Toggle menu" style="display:none; align-items:center; justify-content:center; width:30px; height:30px; background:transparent; border:none; padding:0; cursor:pointer; flex-direction:column; gap:5px; position:relative; z-index:52; visibility:{{ burgerVisibility }};">
+        <span style="display:block; width:22px; height:2px; background:#c7ccd1;"></span>
+        <span style="display:block; width:22px; height:2px; background:#c7ccd1;"></span>
+        <span style="display:block; width:22px; height:2px; background:#c7ccd1;"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= MOBILE NAV DRAWER ================= -->
+  <div style="position:fixed; inset:0; background:linear-gradient(160deg, #0b0d10 0%, #14171a 55%, #0f3a5f 140%); z-index:50; transform:{{ drawerTransform }}; transition:transform 0.35s cubic-bezier(.22,.9,.32,1); display:flex; flex-direction:column; overflow:hidden;">
+    <div style="position:absolute; top:-120px; right:-90px; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle, rgba(44,134,207,0.25) 0%, rgba(44,134,207,0) 70%); pointer-events:none;"></div>
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 24px; position:relative;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="width:34px; height:34px; border:2px solid #2c86cf; border-radius:8px; display:flex; align-items:center; justify-content:center;">
+          <span style="color:#2c86cf; font-size:14px; font-weight:700;">CS</span>
+        </div>
+        <span style="color:#ffffff; font-size:15px; font-weight:700; letter-spacing:1.2px;">CATERING<span style="color:#2c86cf;">SPARES</span></span>
+      </div>
+      <button onclick="{{ closeMenu }}" aria-label="Close menu" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:50%; width:36px; height:36px; color:#e5e8eb; font-size:20px; line-height:1; cursor:pointer;">×</button>
+    </div>
+    <div style="display:flex; flex-direction:column; padding:12px 28px; gap:2px; overflow-y:auto; flex:1;">
+      <sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="4">
+        <a href="{{ n.href }}" style="color:#ffffff; font-size:22px; font-weight:800; letter-spacing:0.2px; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:space-between;">{{ n.label }} <span style="color:#2c86cf; font-size:18px;">→</span></a>
+      </sc-for>
+      <div style="height:1px; background:rgba(255,255,255,0.08); margin:14px 0;"></div>
+      <sc-for list="{{ utilityLinks }}" as="l" hint-placeholder-count="6">
+        <a href="{{ l.href }}" style="color:#9aa2aa; font-size:14px; padding:11px 0;">{{ l.label }}</a>
+      </sc-for>
+    </div>
+    <div style="padding:22px 28px 30px; border-top:1px solid rgba(255,255,255,0.08);">
+      <a href="tel:+61401511115" style="color:#ffffff; font-size:19px; font-weight:800; display:flex; align-items:center; gap:10px;">☎ 0401 511 115</a>
+    </div>
+  </div>
+
+  <!-- ================= HERO SLIDER ================= -->
+  <div class="cs-hero" style="position:relative; min-height:420px; overflow:hidden; background:#0b0d10;">
+    <sc-for list="{{ heroSlides }}" as="s" hint-placeholder-count="4">
+      <div class="cs-hero-slide" style="position:absolute; inset:0; padding:80px 40px; display:flex; align-items:center; opacity:{{ s.opacity }}; pointer-events:{{ s.pointerEvents }}; transition:opacity 0.6s ease;">
+        <img src="{{ s.img }}" alt="{{ s.alt }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;">
+        <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(11,13,16,0.92) 0%, rgba(11,13,16,0.78) 30%, rgba(15,58,95,0.45) 62%, rgba(26,68,104,0.15) 100%);"></div>
+        <div class="cs-hero-content" style="position:relative; max-width:600px;">
+          <div style="display:inline-block; color:#8fc3ea; font-size:11px; font-weight:700; letter-spacing:2.5px; border:1px solid rgba(143,195,234,0.45); border-radius:20px; padding:5px 14px; margin-bottom:20px;">{{ s.badge }}</div>
+          <h2 class="cs-hero-heading" style="color:#ffffff; font-size:32px; line-height:1.4; font-weight:700; margin:0 0 26px; letter-spacing:-0.3px; white-space:pre-line;">{{ s.heading }}</h2>
+          <a href="{{ s.href }}" style="background:#ffffff; color:#12151a; font-size:13.5px; font-weight:700; letter-spacing:0.8px; padding:14px 34px; border-radius:7px; display:inline-block;">SHOP NOW</a>
+        </div>
+      </div>
+    </sc-for>
+    <button class="cs-hero-arrow" onclick="{{ prevSlide }}" style="position:absolute; left:20px; top:36px; width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,255,255,0.35); background:rgba(255,255,255,0.1); color:#fff; font-size:16px; cursor:pointer; z-index:5;">‹</button>
+    <button class="cs-hero-arrow" onclick="{{ nextSlide }}" style="position:absolute; right:20px; top:36px; width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,255,255,0.35); background:rgba(255,255,255,0.1); color:#fff; font-size:16px; cursor:pointer; z-index:5;">›</button>
+    <div style="position:absolute; bottom:20px; left:0; right:0; display:flex; justify-content:center; gap:8px; z-index:5;">
+      <sc-for list="{{ heroDots }}" as="d" hint-placeholder-count="4">
+        <button onclick="{{ d.select }}" style="width:8px; height:8px; padding:0; border-radius:50%; border:none; background:{{ d.color }}; cursor:pointer;"></button>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ================= SEO INTRO ================= -->
+  <div class="cs-seo" style="background:#ffffff; padding:56px 40px 48px; text-align:center;">
+    <h1 style="color:#12151a; font-size:26px; line-height:1.4; font-weight:700; letter-spacing:-0.2px; margin:0 0 16px; max-width:720px; margin-left:auto; margin-right:auto;"><span data-om-id="f85bdfc6:58" style="letter-spacing: -0.2px;">Spare Parts for&nbsp;</span>Commercial Kitchen Appliances&nbsp;</h1>
+    <p style="color:#5c6570; font-size:14.5px; line-height:1.7; max-width:640px; margin:0 auto;">Catering Spares supplies genuine and aftermarket spare parts for commercial dishwashers, glasswashers, combi ovens, cooking equipment and pre-rinse tapware. We stock parts for Eswood, Hobart, Washtech, Norris, Electrolux, Fagor, Rational, Convotherm and more — with same-day dispatch from our Rockdale, NSW warehouse to trades and hospitality businesses across Australia.</p>
+  </div>
+
+  <!-- ================= BRAND STRIP ================= -->
+  <div style="background:#ffffff; padding:0 40px 48px; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:34px 48px;">
+    <a href="https://cateringspares.com.au/manufacturer" style="color:#a7adb3; font-size:22px; font-weight:800; letter-spacing:0.5px; font-style:italic;">Eswood</a>
+    <a href="https://cateringspares.com.au/manufacturer" style="color:#a7adb3; font-size:19px; font-weight:800; letter-spacing:2px;">HOBART</a>
+    <a href="https://cateringspares.com.au/manufacturer" style="color:#a7adb3; font-size:20px; font-weight:600; letter-spacing:0.5px;">Washtech</a>
+    <a href="https://cateringspares.com.au/manufacturer" style="color:#a7adb3; font-size:19px; font-weight:700; letter-spacing:3px;">NORRIS</a>
+    <a href="https://cateringspares.com.au/manufacturer" style="color:#a7adb3; font-size:20px; font-weight:500; letter-spacing:0.5px;">Electrolux</a>
+    <a href="https://cateringspares.com.au/manufacturer" style="color:#a7adb3; font-size:19px; font-weight:800; letter-spacing:1.5px;">FAGOR</a>
+    <a href="https://cateringspares.com.au/manufacturer" style="color:#a7adb3; font-size:19px; font-weight:700; letter-spacing:2.5px;">RATIONAL</a>
+    <a href="https://cateringspares.com.au/manufacturer" style="color:#a7adb3; font-size:20px; font-weight:600; letter-spacing:0.5px; font-style:italic;">Convotherm</a>
+  </div>
+
+  <!-- ================= CATEGORY GRID ================= -->
+  <div class="cs-cat-grid" style="display:grid; grid-template-columns:1fr 1fr;">
+    <div class="cs-cat-tile" style="position:relative; min-height:220px; display:flex; flex-direction:column; justify-content:flex-end; padding:44px 36px; border-right:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden;">
+      <img src="images/tile-washing.jpg" alt="Stainless steel dishwasher spray arm" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+      <div style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(11,13,16,0.88) 0%, rgba(11,13,16,0.15) 65%);"></div>
+      <div style="position:relative; color:#ffffff; font-size:24px; font-weight:700; letter-spacing:0.5px; margin-bottom:14px;">WASHING</div>
+      <a href="https://cateringspares.com.au/index.php/washing.html" style="position:relative; align-self:flex-start; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.4); color:#ffffff; font-size:11.5px; font-weight:700; letter-spacing:1px; padding:9px 18px; border-radius:6px;">SHOP NOW</a>
+    </div>
+    <div class="cs-cat-tile" style="position:relative; min-height:220px; display:flex; flex-direction:column; justify-content:flex-end; padding:44px 36px; border-right:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden;">
+      <img src="images/tile-cooking.jpg" alt="Blue gas burner flame on commercial cooktop" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+      <div style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(11,13,16,0.88) 0%, rgba(11,13,16,0.15) 65%);"></div>
+      <div style="position:relative; color:#ffffff; font-size:24px; font-weight:700; letter-spacing:0.5px; margin-bottom:14px;">COOKING</div>
+      <a href="https://cateringspares.com.au/index.php/cooking.html" style="position:relative; align-self:flex-start; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.4); color:#ffffff; font-size:11.5px; font-weight:700; letter-spacing:1px; padding:9px 18px; border-radius:6px;">SHOP NOW</a>
+    </div>
+    <div class="cs-cat-tile" style="position:relative; min-height:220px; display:flex; flex-direction:column; justify-content:flex-end; padding:44px 36px; border-right:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden;">
+      <img src="images/tile-combi.jpg" alt="Commercial kitchen line with combi oven and plateware" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+      <div style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(11,13,16,0.88) 0%, rgba(11,13,16,0.15) 65%);"></div>
+      <div style="position:relative; color:#ffffff; font-size:24px; font-weight:700; letter-spacing:0.5px; margin-bottom:14px;">COMBI OVENS</div>
+      <a href="https://cateringspares.com.au/index.php/combi-ovens.html" style="position:relative; align-self:flex-start; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.4); color:#ffffff; font-size:11.5px; font-weight:700; letter-spacing:1px; padding:9px 18px; border-radius:6px;">SHOP NOW</a>
+    </div>
+    <div class="cs-cat-tile" style="position:relative; min-height:220px; display:flex; flex-direction:column; justify-content:flex-end; padding:44px 36px; border-right:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06); overflow:hidden;">
+      <img src="images/tile-prerinse.jpg" alt="Pre-rinse tapware spraying water" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+      <div style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(11,13,16,0.88) 0%, rgba(11,13,16,0.15) 65%);"></div>
+      <div style="position:relative; color:#ffffff; font-size:24px; font-weight:700; letter-spacing:0.5px; margin-bottom:14px;">PRE-RINSE UNITS</div>
+      <a href="https://cateringspares.com.au/index.php/pre-rinse-units-and-tapware.html" style="position:relative; align-self:flex-start; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.4); color:#ffffff; font-size:11.5px; font-weight:700; letter-spacing:1px; padding:9px 18px; border-radius:6px;">SHOP NOW</a>
+    </div>
+  </div>
+
+  <!-- ================= BLOG TEASERS ================= -->
+  <div class="cs-blog-grid" style="background:#f5f6f7; padding:50px 40px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px;">
+    <div style="background:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 2px 10px rgba(20,23,26,0.05); display:flex; flex-direction:column;">
+      <img src="images/blog-tradies-van.jpg" alt="Service van fitted out for tradies" style="width:100%; height:180px; display:block; object-fit:cover;"/>
+      <div style="padding:22px 22px; display:flex; flex-direction:column; flex:1;">
+        <div style="color:#9aa2aa; font-size:11.5px; font-style:italic; margin-bottom:8px;">admin · 10.03.2020</div>
+        <div style="color:#14171a; font-size:16px; font-weight:700; margin-bottom:10px;">Tradies</div>
+        <div style="color:#5b636b; font-size:13px; line-height:1.6; flex:1; margin-bottom:16px;">Trade discount for service companies.</div>
+        <a href="https://cateringspares.com.au/index.php/blog/post-3" style="align-self:flex-start; width:34px; height:34px; border-radius:8px; background:#0f3a5f; color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:16px;">→</a>
+      </div>
+    </div>
+    <div style="background:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 2px 10px rgba(20,23,26,0.05); display:flex; flex-direction:column;">
+      <img src="images/blog-badges-logos.jpg" alt="Genuine, replacement, Australian Made and Made in EU badges" style="width:100%; height:180px; display:block; object-fit:cover; object-position:top;"/>
+      <div style="padding:22px 22px; display:flex; flex-direction:column; flex:1;">
+        <div style="color:#9aa2aa; font-size:11.5px; font-style:italic; margin-bottom:8px;">admin · 08.04.2020</div>
+        <div style="color:#14171a; font-size:16px; font-weight:700; margin-bottom:10px;">Total Transparency</div>
+        <div style="color:#5b636b; font-size:13px; line-height:1.6; flex:1; margin-bottom:16px;">Catering Spares has full intention of being transparent and correct by giving you the opportunity to select parts in full awareness.</div>
+        <a href="https://cateringspares.com.au/index.php/blog/post-2" style="align-self:flex-start; width:34px; height:34px; border-radius:8px; background:#0f3a5f; color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:16px;">→</a>
+      </div>
+    </div>
+    <div style="background:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 2px 10px rgba(20,23,26,0.05); display:flex; flex-direction:column;">
+      <img src="images/hero-doorseals.jpg" alt="Combi oven parts and door seals" style="width:100%; height:180px; display:block; object-fit:cover;"/>
+      <div style="padding:22px 22px; display:flex; flex-direction:column; flex:1;">
+        <div style="color:#9aa2aa; font-size:11.5px; font-style:italic; margin-bottom:8px;">admin · 15.05.2020</div>
+        <div style="color:#14171a; font-size:16px; font-weight:700; margin-bottom:10px;">Same Day Dispatch</div>
+        <div style="color:#5b636b; font-size:13px; line-height:1.6; flex:1; margin-bottom:16px;">Orders placed before 2pm ship same day from our Rockdale warehouse.</div>
+        <a href="https://cateringspares.com.au/index.php/blog" style="align-self:flex-start; width:34px; height:34px; border-radius:8px; background:#0f3a5f; color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:16px;">→</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= INFO CARDS ================= -->
+  <div class="cs-info-grid" style="padding:56px 40px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:28px;">
+    <div style="text-align:center;">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0f3a5f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto;"><rect x="1" y="7" width="14" height="10"></rect><path d="M15 10h4l3 3v4h-7z"></path><circle cx="6" cy="19" r="2"></circle><circle cx="18" cy="19" r="2"></circle></svg>
+      <div style="color:#14171a; font-size:15.5px; font-weight:700; margin:16px 0 10px;">SHIPPING &amp; DELIVERY</div>
+      <div style="color:#5b636b; font-size:13px; line-height:1.65; max-width:260px; margin:0 auto;">Here you can read details about your order's journey from purchase to delivery, including packaging and tracking.</div>
+    </div>
+    <div style="text-align:center;">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0f3a5f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto;"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg>
+      <div style="color:#14171a; font-size:15.5px; font-weight:700; margin:16px 0 10px;">PAYMENT METHODS</div>
+      <div style="color:#5b636b; font-size:13px; line-height:1.65; max-width:260px; margin:0 auto;">We accept Visa and MasterCard with no surcharge, and Amex with surcharge, for your convenience.</div>
+    </div>
+    <div style="text-align:center;">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0f3a5f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto;"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
+      <div style="color:#14171a; font-size:15.5px; font-weight:700; margin:16px 0 10px;">CONTACT US</div>
+      <div style="color:#5b636b; font-size:13px; line-height:1.65; max-width:260px; margin:0 auto 16px;">Available Monday to Friday, 8:00 AM to 5:00 PM via email, telephone, or our contact form.</div>
+      <a href="https://cateringspares.com.au/index.php/contact/" style="background:#0f3a5f; color:#ffffff; font-size:12px; font-weight:700; letter-spacing:0.6px; padding:11px 22px; border-radius:7px; display:inline-block;">CONTACT WITH US</a>
+    </div>
+  </div>
+
+  <!-- ================= MAP ================= -->
+  <div style="position:relative; height:280px; overflow:hidden;">
+    <img src="images/map-rockdale.jpg" alt="Map showing Catering Spares' Rockdale, NSW location" style="width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(0.15) contrast(1.02);">
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="cs-footer-grid" style="background:#0e1013; padding:50px 40px 30px; display:grid; grid-template-columns:1fr 1fr 1.4fr; gap:40px;">
+    <div>
+      <div style="color:#ffffff; font-size:13px; font-weight:700; letter-spacing:1.2px; margin-bottom:16px;">INFORMATION</div>
+      <div style="display:flex; flex-direction:column; gap:9px;">
+        <sc-for list="{{ footerInfoLinks }}" as="f" hint-placeholder-count="7">
+          <a href="{{ f.href }}" style="color:#c7ccd1; font-size:13px;">{{ f.label }}</a>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <div style="color:#ffffff; font-size:13px; font-weight:700; letter-spacing:1.2px; margin-bottom:16px;">MY ACCOUNT</div>
+      <div style="display:flex; flex-direction:column; gap:9px;">
+        <sc-for list="{{ footerAccountLinks }}" as="f" hint-placeholder-count="5">
+          <a href="{{ f.href }}" style="color:#c7ccd1; font-size:13px;">{{ f.label }}</a>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <div style="color:#ffffff; font-size:13px; font-weight:700; letter-spacing:1.2px; margin-bottom:16px;">NEWSLETTER</div>
+      <div style="color:#8992a0; font-size:13px; line-height:1.6; margin-bottom:16px;">Subscribe to the Catering Spares mailing list to receive updates on new arrivals, special offers and other discount information.</div>
+      <div style="display:flex; gap:10px;">
+        <input type="email" placeholder="Your e-mail" style="flex:1; background:#1b1e22; border:1px solid #33393f; border-radius:7px; padding:11px 14px; color:#ffffff; font-size:13px;">
+        <a href="#" style="background:#2c86cf; color:#ffffff; font-size:12px; font-weight:700; letter-spacing:0.6px; padding:11px 20px; border-radius:7px; white-space:nowrap;">SUBSCRIBE</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= BOTTOM BAR ================= -->
+  <div class="cs-bottom-bar" style="background:#0e1013; border-top:1px solid #24282d; padding:22px 40px; display:flex; align-items:center; justify-content:space-between;">
+    <div style="display:flex; align-items:center; gap:9px;">
+      <div style="width:26px; height:26px; border:1.5px solid #2c86cf; border-radius:6px; display:flex; align-items:center; justify-content:center;">
+        <span style="color:#2c86cf; font-size:11px; font-weight:700;">CS</span>
+      </div>
+      <span style="color:#5c6570; font-size:12px;">© 2026 Catering Spares. All rights reserved.</span>
+    </div>
+    <button style="width:34px; height:34px; border-radius:50%; border:1px solid #33393f; background:transparent; color:#78828c; font-size:14px; cursor:pointer;">↑</button>
+  </div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { currentSlide: 0, menuOpen: false };
+
+  renderVals() {
+    const slideData = [
+      {
+        img: "images/hero-kitchen.jpg",
+        alt: "Commercial kitchen fitted with catering equipment",
+        badge: "AUSTRALIA'S TRUSTED PARTS SUPPLIER",
+        heading: "Catering Spares stock thousands of genuine and replacement spare parts for Eswood, Hobart, Washtech, Norris, Electrolux, Fagor, Bracton, Goldstein, Rational, Convotherm and many more",
+        href: "https://cateringspares.com.au/index.php/washing.html"
+      },
+      {
+        img: "images/hero-gas.jpg",
+        alt: "Gas burner flame on commercial cooktop",
+        badge: "GAS COMPONENTS",
+        heading: "GAS VALVES, REGULATORS PILOTS,\nTHERMOCOUPLES and much more...",
+        href: "https://cateringspares.com.au/index.php/cooking.html"
+      },
+      {
+        img: "images/hero-prerinse.jpg",
+        alt: "Pre-rinse tapware over a commercial kitchen sink",
+        badge: "TAPWARE",
+        heading: "Choose from our wide range of\nPRE-RINSE UNITS AND TAPWARE",
+        href: "https://cateringspares.com.au/index.php/pre-rinse-units-and-tapware.html"
+      },
+      {
+        img: "images/hero-doorseals.jpg",
+        alt: "Commercial combi oven with door open",
+        badge: "SPARE PARTS",
+        heading: "DOOR SEALS, ELEMENTS, MOTORS\nAnd More...",
+        href: "https://cateringspares.com.au/index.php/combi-ovens.html"
+      }
+    ];
+    const total = slideData.length;
+    const current = this.state.currentSlide;
+    const heroSlides = slideData.map((s, i) => ({
+      ...s,
+      opacity: i === current ? 1 : 0,
+      pointerEvents: i === current ? "auto" : "none"
+    }));
+    const heroDots = slideData.map((s, i) => ({
+      color: i === current ? "#ffffff" : "rgba(255,255,255,0.4)",
+      select: () => this.setState({ currentSlide: i })
+    }));
+    const prevSlide = () => this.setState({ currentSlide: (current - 1 + total) % total });
+    const nextSlide = () => this.setState({ currentSlide: (current + 1) % total });
+    const menuOpen = this.state.menuOpen;
+    const toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+    const closeMenu = () => this.setState({ menuOpen: false });
+    const drawerTransform = menuOpen ? "translateX(0)" : "translateX(100%)";
+    const burgerLine1 = menuOpen ? "translateY(7px) rotate(45deg)" : "none";
+    const burgerLine2Opacity = menuOpen ? 0 : 1;
+    const burgerLine3 = menuOpen ? "translateY(-7px) rotate(-45deg)" : "none";
+    const burgerVisibility = menuOpen ? "hidden" : "visible";
+
+    const utilityLinks = [
+      { label: "My Account", href: "https://cateringspares.com.au/index.php/customer/account/" },
+      { label: "My Wishlist", href: "https://cateringspares.com.au/index.php/wishlist/" },
+      { label: "Checkout", href: "https://cateringspares.com.au/index.php/checkout/" },
+      { label: "Register", href: "https://cateringspares.com.au/index.php/customer/account/create/" },
+      { label: "News", href: "https://cateringspares.com.au/index.php/blog" }
+    ];
+    const navLinks = [
+      { label: "SHOP BY MANUFACTURER", href: "https://cateringspares.com.au/manufacturer" },
+      { label: "SHOP BY CATEGORY", href: "https://cateringspares.com.au/category" },
+      { label: "CATERING EQUIPMENT", href: "https://cateringspares.com.au/index.php/best-sellers.html" }
+    ];
+    const footerInfoLinks = [
+      { label: "Home", href: "https://cateringspares.com.au/index.php/" },
+      { label: "Site Map", href: "https://cateringspares.com.au/index.php/sitemap" },
+      { label: "Advanced Search", href: "https://cateringspares.com.au/index.php/catalogsearch/advanced/" },
+      { label: "Orders and Returns", href: "https://cateringspares.com.au/index.php/sales/guest/form/" },
+      { label: "Contact Us", href: "https://cateringspares.com.au/index.php/contact/" },
+      { label: "About Us", href: "https://cateringspares.com.au/index.php/about" },
+      { label: "Customer Service", href: "https://cateringspares.com.au/index.php/customer-service" },
+      { label: "Privacy Policy", href: "https://cateringspares.com.au/index.php/privacy-policy-cookie-restriction-mode" }
+    ];
+    const footerAccountLinks = [
+      { label: "Sign In", href: "https://cateringspares.com.au/index.php/customer/account/login/" },
+      { label: "View Cart", href: "https://cateringspares.com.au/index.php/checkout/cart/" },
+      { label: "My Wishlist", href: "https://cateringspares.com.au/index.php/wishlist/" },
+      { label: "Track My Order", href: "#" },
+      { label: "Help", href: "#" }
+    ];
+    return { utilityLinks, navLinks, footerInfoLinks, footerAccountLinks, heroSlides, heroDots, prevSlide, nextSlide, menuOpen, toggleMenu, closeMenu, drawerTransform, burgerLine1, burgerLine2Opacity, burgerLine3, burgerVisibility };
+  }
+}
+</script>
+</body>
+</html>
