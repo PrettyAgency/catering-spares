@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<style>
+  body { margin:0; background:#eef0f2; }
+  a { color:#1c6fb0; text-decoration:none; }
+  a:hover { color:#2c86cf; }
+  @media (max-width:760px) {
+    .cs-util-msg { display:none !important; }
+    .cs-util-bar { padding:8px 16px !important; gap:10px !important; }
+    .cs-header { padding:16px 16px !important; flex-wrap:wrap !important; gap:12px !important; }
+    .cs-header-actions { gap:16px !important; }
+    .cs-phone-label { display:none !important; }
+    .cs-nav { padding:10px 16px !important; }
+    .cs-nav-links { display:none !important; }
+    .cs-nav-burger { display:flex !important; }
+    .cs-nav-search { display:none !important; }
+    .cs-page-head { padding:32px 20px !important; }
+    .cs-page-head h1 { font-size:26px !important; }
+    .cs-shop { grid-template-columns:1fr !important; padding:24px 20px 44px !important; gap:24px !important; }
+    .cs-sidebar { position:static !important; }
+    .cs-prod-grid { grid-template-columns:1fr 1fr !important; }
+    .cs-toolbar { flex-wrap:wrap !important; gap:12px !important; }
+    .cs-footer-grid { grid-template-columns:1fr !important; padding:36px 20px 20px !important; gap:28px !important; }
+    .cs-bottom-bar { padding:18px 20px !important; }
+  }
+  .cs-nav-burger { display:none; }
+  .cs-mega-panel { opacity:0; visibility:hidden; transform:translateY(8px); transition:opacity .18s ease, transform .18s ease, visibility .18s; }
+  .cs-mega-wrap:hover .cs-mega-panel { opacity:1; visibility:visible; transform:translateY(0); }
+  .cs-mega-panel a:hover { color:#2c86cf; }
+  @media (max-width:1100px) {
+    .cs-prod-grid { grid-template-columns:repeat(3, 1fr) !important; }
+  }
+</style>
+<script src="image-slot.js"></script>
+</helmet>
+
+<div style="font-family:Arial, Helvetica, sans-serif; background:#eef0f2;">
+<div style="max-width:1440px; margin:0 auto; background:#ffffff; box-shadow:0 0 40px rgba(20,23,26,0.08);">
+
+  <!-- UTILITY BAR -->
+  <div class="cs-util-bar" style="background:#ffffff; border-bottom:1px solid #e2e5e8; padding:9px 40px; display:flex; align-items:center; justify-content:space-between; font-size:12px;">
+    <div style="display:flex; gap:20px;">
+      <sc-for list="{{ utilityLinks }}" as="l" hint-placeholder-count="5">
+        <a href="{{ l.href }}" style="color:#5b636b; font-size:12px;">{{ l.label }}</a>
+      </sc-for>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <span class="cs-util-msg" style="color:#9aa2aa;">Welcome to our online store!</span>
+      <a href="#" style="color:#0f3a5f; font-weight:700;">Log in →</a>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="cs-header" style="background:#14171a; padding:22px 40px; display:flex; align-items:center; justify-content:space-between;">
+    <a href="Catering Spares Homepage Redesign.dc.html" style="display:flex; align-items:center; gap:12px;">
+      <div style="width:40px; height:40px; border:2px solid #2c86cf; border-radius:8px; display:flex; align-items:center; justify-content:center; flex:none;">
+        <span style="color:#2c86cf; font-size:17px; font-weight:700;">CS</span>
+      </div>
+      <div style="line-height:1.15;">
+        <div style="color:#ffffff; font-size:20px; font-weight:700; letter-spacing:1.4px;">CATERING<span style="color:#2c86cf;">SPARES</span></div>
+        <div style="color:#78828c; font-size:10px; letter-spacing:2.2px; margin-top:2px;">GENUINE &amp; REPLACEMENT PARTS</div>
+      </div>
+    </a>
+    <div class="cs-header-actions" style="display:flex; align-items:center; gap:32px;">
+      <a href="tel:+61401511115" style="color:#ffffff; font-size:16px; font-weight:700; display:flex; align-items:center; gap:8px;">☎ <span class="cs-phone-label">0401 511 115</span></a>
+      <div style="display:flex; align-items:center; gap:8px; color:#ffffff; font-size:14px; font-weight:600;">
+        <div style="position:relative;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4"></circle><circle cx="19" cy="21" r="1.4"></circle><path d="M2 3h2l2.6 12.6a2 2 0 002 1.6h9a2 2 0 002-1.9L21 7H6"></path></svg>
+          <span style="position:absolute; top:-7px; right:-9px; background:#2c86cf; color:#fff; font-size:9.5px; font-weight:700; width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center;">0</span>
+        </div>
+        <span>CART</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="cs-nav" style="background:#1b1e22; padding:13px 40px; display:flex; align-items:center; justify-content:space-between;">
+    <div class="cs-nav-links" style="display:flex; align-items:center; gap:26px;">
+      <a href="Catering Spares Manufacturer Page.dc.html" style="color:#c7ccd1; font-size:12px; font-weight:700; letter-spacing:1px;">SHOP BY MANUFACTURER</a>
+      <div class="cs-mega-wrap" style="position:relative;">
+        <a href="https://cateringspares.com.au/category" style="color:#c7ccd1; font-size:12px; font-weight:700; letter-spacing:1px; display:flex; align-items:center; gap:6px;">SHOP BY CATEGORY <span style="font-size:8px;">▼</span></a>
+        <div class="cs-mega-panel" style="position:absolute; top:100%; left:0; padding-top:14px; z-index:60;">
+          <div style="width:920px; max-width:82vw; background:#ffffff; border-radius:14px; box-shadow:0 26px 64px rgba(11,13,16,0.3); padding:30px 32px;">
+            <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:28px 32px;">
+              <sc-for list="{{ megaCategories }}" as="c" hint-placeholder-count="7">
+                <div>
+                  <a href="{{ c.href }}" style="display:block; color:#14171a; font-size:13px; font-weight:800; letter-spacing:0.4px; margin-bottom:12px; padding-bottom:10px; border-bottom:2px solid #2c86cf;">{{ c.label }}</a>
+                  <div style="display:flex; flex-direction:column; gap:9px;">
+                    <sc-for list="{{ c.items }}" as="s" hint-placeholder-count="5">
+                      <a href="{{ s.href }}" style="color:#5b636b; font-size:12.5px; line-height:1.3;">{{ s.label }}</a>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="https://cateringspares.com.au/index.php/best-sellers.html" style="color:#c7ccd1; font-size:12px; font-weight:700; letter-spacing:1px;">CATERING EQUIPMENT</a>
+    </div>
+    <div style="display:flex; align-items:center; gap:18px;">
+      <form action="https://cateringspares.com.au/index.php/catalogsearch/result/" method="get" class="cs-nav-search" style="display:flex; align-items:center; gap:6px; background:#ffffff; border:1px solid #ffffff; border-radius:8px; padding:0 4px 0 13px; height:38px; width:280px; box-shadow:0 2px 8px rgba(0,0,0,0.18);">
+        <input type="text" name="q" placeholder="Search parts, brands, models…" style="flex:1; min-width:0; background:transparent; border:none; outline:none; color:#14171a; font-size:12.5px;">
+        <button type="submit" aria-label="Search" style="background:#2c86cf; border:none; border-radius:6px; width:32px; height:30px; display:flex; align-items:center; justify-content:center; cursor:pointer; flex:none;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+        </button>
+      </form>
+      <button class="cs-nav-burger" onclick="{{ toggleMenu }}" aria-label="Toggle menu" style="display:none; align-items:center; justify-content:center; width:30px; height:30px; background:transparent; border:none; padding:0; cursor:pointer; flex-direction:column; gap:5px; position:relative; z-index:52; visibility:{{ burgerVisibility }};">
+        <span style="display:block; width:22px; height:2px; background:#c7ccd1;"></span>
+        <span style="display:block; width:22px; height:2px; background:#c7ccd1;"></span>
+        <span style="display:block; width:22px; height:2px; background:#c7ccd1;"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div style="position:fixed; inset:0; background:linear-gradient(160deg, #0b0d10 0%, #14171a 55%, #0f3a5f 140%); z-index:50; transform:{{ drawerTransform }}; transition:transform 0.35s cubic-bezier(.22,.9,.32,1); display:flex; flex-direction:column; overflow:hidden;">
+    <div style="position:absolute; top:-120px; right:-90px; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle, rgba(44,134,207,0.25) 0%, rgba(44,134,207,0) 70%); pointer-events:none;"></div>
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 24px; position:relative;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="width:34px; height:34px; border:2px solid #2c86cf; border-radius:8px; display:flex; align-items:center; justify-content:center;">
+          <span style="color:#2c86cf; font-size:14px; font-weight:700;">CS</span>
+        </div>
+        <span style="color:#ffffff; font-size:15px; font-weight:700; letter-spacing:1.2px;">CATERING<span style="color:#2c86cf;">SPARES</span></span>
+      </div>
+      <button onclick="{{ closeMenu }}" aria-label="Close menu" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:50%; width:36px; height:36px; color:#e5e8eb; font-size:20px; line-height:1; cursor:pointer;">×</button>
+    </div>
+    <div style="display:flex; flex-direction:column; padding:12px 28px; gap:2px; overflow-y:auto; flex:1;">
+      <sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="3">
+        <a href="{{ n.href }}" style="color:#ffffff; font-size:22px; font-weight:800; letter-spacing:0.2px; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:space-between;">{{ n.label }} <span style="color:#2c86cf; font-size:18px;">→</span></a>
+      </sc-for>
+      <div style="height:1px; background:rgba(255,255,255,0.08); margin:14px 0;"></div>
+      <sc-for list="{{ utilityLinks }}" as="l" hint-placeholder-count="5">
+        <a href="{{ l.href }}" style="color:#9aa2aa; font-size:14px; padding:11px 0;">{{ l.label }}</a>
+      </sc-for>
+    </div>
+    <div style="padding:22px 28px 30px; border-top:1px solid rgba(255,255,255,0.08);">
+      <a href="tel:+61401511115" style="color:#ffffff; font-size:19px; font-weight:800; display:flex; align-items:center; gap:10px;">☎ 0401 511 115</a>
+    </div>
+  </div>
+
+  <!-- BREADCRUMB -->
+  <div style="background:#ffffff; border-bottom:1px solid #eceff1; padding:14px 40px; font-size:12.5px; color:#9aa2aa;">
+    <a href="Catering Spares Homepage Redesign.dc.html" style="color:#5b636b;">Home</a> <span style="margin:0 8px;">›</span> <a href="https://cateringspares.com.au/category" style="color:#5b636b;">Shop By Category</a> <span style="margin:0 8px;">›</span> <span style="color:#14171a; font-weight:700;">Washing</span>
+  </div>
+
+  <!-- PAGE HEAD -->
+  <div class="cs-page-head" style="position:relative; padding:44px 40px; overflow:hidden; background:#0b0d10;">
+    <img src="images/tile-washing.jpg" alt="Commercial dishwasher spray arm and wash components" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+    <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(11,13,16,0.94) 0%, rgba(11,13,16,0.8) 45%, rgba(15,58,95,0.45) 100%);"></div>
+    <div style="position:relative;">
+      <div style="color:#8fc3ea; font-size:11px; font-weight:800; letter-spacing:2.5px; margin-bottom:14px;">DISHWASHERS &amp; GLASSWASHERS</div>
+      <h1 style="color:#ffffff; font-size:34px; font-weight:800; letter-spacing:-0.3px; margin:0 0 14px;">Washing</h1>
+      <p style="color:#cbd3db; font-size:14.5px; line-height:1.7; max-width:660px; margin:0;">Genuine and replacement spare parts for commercial dishwashers, glasswashers and passthrough machines — wash &amp; rinse arms, pumps, elements, door seals, dosing gear and more, for every major brand.</p>
+    </div>
+  </div>
+
+  <!-- SHOP LAYOUT -->
+  <div class="cs-shop" style="background:#f5f6f7; padding:32px 40px 52px; display:grid; grid-template-columns:250px 1fr; gap:32px; align-items:start;">
+
+    <!-- SIDEBAR -->
+    <div class="cs-sidebar" style="position:sticky; top:20px; display:flex; flex-direction:column; gap:22px;">
+      <div style="background:#ffffff; border:1px solid #e4e7ea; border-radius:12px; padding:20px 22px;">
+        <div style="color:#14171a; font-size:13px; font-weight:800; letter-spacing:0.8px; margin-bottom:14px;">CATEGORIES</div>
+        <div style="display:flex; flex-direction:column;">
+          <sc-for list="{{ subCategories }}" as="c" hint-placeholder-count="7">
+            <a href="{{ c.href }}" style="display:flex; align-items:center; justify-content:space-between; padding:9px 0; border-bottom:1px solid #f0f2f4; color:{{ c.color }}; font-size:13px; font-weight:{{ c.weight }};">{{ c.label }} <span style="color:#b3bac1; font-size:12px;">{{ c.count }}</span></a>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#ffffff; border:1px solid #e4e7ea; border-radius:12px; padding:20px 22px;">
+        <div style="color:#14171a; font-size:13px; font-weight:800; letter-spacing:0.8px; margin-bottom:14px;">SHOP BY BRAND</div>
+        <div style="display:flex; flex-direction:column; gap:11px;">
+          <sc-for list="{{ brandFilters }}" as="b" hint-placeholder-count="6">
+            <label style="display:flex; align-items:center; gap:10px; color:#5b636b; font-size:13px; cursor:pointer;"><span style="width:16px; height:16px; border:1.5px solid #c4cad0; border-radius:4px; display:inline-block; flex:none;"></span>{{ b.label }} <span style="color:#b3bac1; margin-left:auto;">{{ b.count }}</span></label>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#0f3a5f; border-radius:12px; padding:22px; color:#ffffff;">
+        <div style="font-size:15px; font-weight:800; margin-bottom:8px;">Not sure which part?</div>
+        <div style="font-size:12.5px; line-height:1.6; color:#bcd4e8; margin-bottom:16px;">Our team will help you identify the exact spare for your machine. Call us with your model number.</div>
+        <a href="tel:+61401511115" style="background:#ffffff; color:#0f3a5f; font-size:12.5px; font-weight:800; letter-spacing:0.5px; padding:11px 18px; border-radius:7px; display:inline-block;">☎ 0401 511 115</a>
+      </div>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div>
+      <div class="cs-toolbar" style="background:#ffffff; border:1px solid #e4e7ea; border-radius:12px; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; margin-bottom:22px;">
+        <span style="color:#5b636b; font-size:13px;">Showing <strong style="color:#14171a;">1–48</strong> of <strong style="color:#14171a;">149</strong> products</span>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="color:#9aa2aa; font-size:12.5px;">Sort by</span>
+          <div style="border:1px solid #d7dbdf; border-radius:7px; padding:9px 14px; color:#14171a; font-size:12.5px; font-weight:700; display:flex; align-items:center; gap:20px;">Best Selling <span style="color:#9aa2aa;">▾</span></div>
+        </div>
+      </div>
+
+      <div class="cs-prod-grid" style="display:grid; grid-template-columns:{{ gridCols }}; gap:18px;">
+        <sc-for list="{{ products }}" as="p" hint-placeholder-count="48">
+          <a href="{{ p.href }}" style="position:relative; background:#ffffff; border:{{ cardBorder }}; border-radius:12px; overflow:hidden; display:flex; flex-direction:column; transition:box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease; box-shadow:{{ cardShadow }};" style-hover="{{ cardHover }}">
+            <sc-if value="{{ p.onSale }}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute; top:12px; left:12px; z-index:2; background:#d61f26; color:#ffffff; font-size:10.5px; font-weight:800; letter-spacing:0.8px; padding:5px 10px; border-radius:5px;">SALE</div>
+            </sc-if>
+            <div style="height:150px; padding:16px; display:flex; align-items:center; justify-content:center;">
+              <image-slot id="{{ p.slotId }}" shape="rect" fit="contain" placeholder="{{ p.name }}" style="width:100%; height:100%; display:block;"></image-slot>
+            </div>
+            <div style="padding:0 18px 18px; display:flex; flex-direction:column; flex:1;">
+              <div style="color:#9aa2aa; font-size:11px; font-weight:700; letter-spacing:0.5px; margin-bottom:6px;">{{ p.brand }}</div>
+              <div style="color:#14171a; font-size:13.5px; font-weight:700; line-height:1.35; min-height:38px; margin-bottom:12px;">{{ p.name }}</div>
+              <div style="display:flex; align-items:baseline; gap:6px; margin-top:auto; flex-wrap:wrap;">
+                <span style="color:#14171a; font-size:21px; font-weight:800;">{{ p.price }}</span>
+                <span style="color:#9aa2aa; font-size:11px; font-weight:700;">inc GST</span>
+              </div>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-top:14px;">
+                <span style="background:#0f3a5f; color:#ffffff; font-size:11.5px; font-weight:800; letter-spacing:0.4px; padding:9px 14px; border-radius:6px;">ADD TO CART</span>
+                <sc-if value="{{ showStock }}" hint-placeholder-val="{{ true }}">
+                  <span style="color:{{ p.stockColor }}; font-size:11px; font-weight:700;">{{ p.stock }}</span>
+                </sc-if>
+              </div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+
+      <!-- PAGINATION -->
+      <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-top:34px;">
+        <sc-for list="{{ pages }}" as="pg" hint-placeholder-count="5">
+          <span style="min-width:38px; height:38px; padding:0 10px; border-radius:8px; border:1px solid {{ pg.border }}; background:{{ pg.bg }}; color:{{ pg.color }}; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; cursor:pointer;">{{ pg.label }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="cs-footer-grid" style="background:#0e1013; padding:50px 40px 30px; display:grid; grid-template-columns:1fr 1fr 1.4fr; gap:40px;">
+    <div>
+      <div style="color:#ffffff; font-size:13px; font-weight:700; letter-spacing:1.2px; margin-bottom:16px;">INFORMATION</div>
+      <div style="display:flex; flex-direction:column; gap:9px;">
+        <sc-for list="{{ footerInfoLinks }}" as="f" hint-placeholder-count="8">
+          <a href="{{ f.href }}" style="color:#c7ccd1; font-size:13px;">{{ f.label }}</a>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <div style="color:#ffffff; font-size:13px; font-weight:700; letter-spacing:1.2px; margin-bottom:16px;">MY ACCOUNT</div>
+      <div style="display:flex; flex-direction:column; gap:9px;">
+        <sc-for list="{{ footerAccountLinks }}" as="f" hint-placeholder-count="4">
+          <a href="{{ f.href }}" style="color:#c7ccd1; font-size:13px;">{{ f.label }}</a>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <div style="color:#ffffff; font-size:13px; font-weight:700; letter-spacing:1.2px; margin-bottom:16px;">NEWSLETTER</div>
+      <div style="color:#8992a0; font-size:13px; line-height:1.6; margin-bottom:16px;">Subscribe to the Catering Spares mailing list to receive updates on new arrivals, special offers and other discount information.</div>
+      <div style="display:flex; gap:10px;">
+        <input type="email" placeholder="Your e-mail" style="flex:1; background:#1b1e22; border:1px solid #33393f; border-radius:7px; padding:11px 14px; color:#ffffff; font-size:13px;">
+        <a href="#" style="background:#2c86cf; color:#ffffff; font-size:12px; font-weight:700; letter-spacing:0.6px; padding:11px 20px; border-radius:7px; white-space:nowrap;">SUBSCRIBE</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="cs-bottom-bar" style="background:#0e1013; border-top:1px solid #24282d; padding:22px 40px; display:flex; align-items:center; justify-content:space-between;">
+    <div style="display:flex; align-items:center; gap:9px;">
+      <div style="width:26px; height:26px; border:1.5px solid #2c86cf; border-radius:6px; display:flex; align-items:center; justify-content:center;">
+        <span style="color:#2c86cf; font-size:11px; font-weight:700;">CS</span>
+      </div>
+      <span style="color:#5c6570; font-size:12px;">© 2026 Catering Spares. All rights reserved.</span>
+    </div>
+    <button style="width:34px; height:34px; border-radius:50%; border:1px solid #33393f; background:transparent; color:#78828c; font-size:14px; cursor:pointer;">↑</button>
+  </div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;catalogDensity&quot;: {
+    &quot;editor&quot;: &quot;enum&quot;,
+    &quot;options&quot;: [&quot;spacious&quot;, &quot;comfortable&quot;, &quot;compact&quot;],
+    &quot;default&quot;: &quot;comfortable&quot;,
+    &quot;tsType&quot;: &quot;string&quot;,
+    &quot;section&quot;: &quot;Catalog&quot;
+  },
+  &quot;cardStyle&quot;: {
+    &quot;editor&quot;: &quot;enum&quot;,
+    &quot;options&quot;: [&quot;bordered&quot;, &quot;elevated&quot;, &quot;flat&quot;],
+    &quot;default&quot;: &quot;bordered&quot;,
+    &quot;tsType&quot;: &quot;string&quot;,
+    &quot;section&quot;: &quot;Catalog&quot;
+  },
+  &quot;showStock&quot;: {
+    &quot;editor&quot;: &quot;boolean&quot;,
+    &quot;default&quot;: true,
+    &quot;tsType&quot;: &quot;boolean&quot;,
+    &quot;section&quot;: &quot;Catalog&quot;
+  }
+}">
+class Component extends DCLogic {
+  state = { menuOpen: false };
+  renderVals() {
+    const menuOpen = this.state.menuOpen;
+    const toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+    const closeMenu = () => this.setState({ menuOpen: false });
+    const drawerTransform = menuOpen ? "translateX(0)" : "translateX(100%)";
+    const burgerVisibility = menuOpen ? "hidden" : "visible";
+
+    const W = "https://cateringspares.com.au/index.php/washing.html";
+    const subCategories = [
+      { label: "All Washing", href: W, count: 149, active: true },
+      { label: "Wash & Rinse Arms", href: W, count: 32 },
+      { label: "Pumps & Motors", href: W, count: 41 },
+      { label: "Elements", href: W, count: 28 },
+      { label: "Door Seals & Gaskets", href: W, count: 19 },
+      { label: "Dosing & Detergent", href: W, count: 15 },
+      { label: "Thermostats & Controls", href: W, count: 14 }
+    ].map(c => ({
+      ...c,
+      color: c.active ? "#2c86cf" : "#5b636b",
+      weight: c.active ? 800 : 600
+    }));
+
+    const brandFilters = [
+      { label: "Eswood", count: 58 },
+      { label: "Hobart", count: 34 },
+      { label: "Washtech", count: 41 },
+      { label: "Norris", count: 22 },
+      { label: "Electrolux", count: 18 },
+      { label: "Fagor", count: 12 }
+    ];
+
+    const baseProducts = [
+      { brand: "ESWOOD", name: "Wash Arm Assembly - Upper", price: "$89.50", onSale: false, stock: "In Stock" },
+      { brand: "HOBART", name: "Rinse Arm Bearing Kit", price: "$42.00", onSale: false, stock: "In Stock" },
+      { brand: "WASHTECH", name: "Wash Pump Motor 3-Phase", price: "$318.00", onSale: true, stock: "Low Stock" },
+      { brand: "ESWOOD", name: "Door Seal - SW / ES Series", price: "$56.90", onSale: false, stock: "In Stock" },
+      { brand: "NORRIS", name: "Heating Element 6kW", price: "$124.00", onSale: false, stock: "In Stock" },
+      { brand: "ELECTROLUX", name: "Rinse Aid Dosing Pump", price: "$187.50", onSale: true, stock: "In Stock" },
+      { brand: "FAGOR", name: "Wash Tank Thermostat", price: "$73.20", onSale: false, stock: "Low Stock" },
+      { brand: "HOBART", name: "Drain Pump Assembly", price: "$212.00", onSale: false, stock: "In Stock" },
+      { brand: "ESWOOD", name: "Lower Wash Arm - ES Series", price: "$78.40", onSale: false, stock: "In Stock" },
+      { brand: "WASHTECH", name: "Rinse Injector Nozzle", price: "$18.90", onSale: false, stock: "In Stock" },
+      { brand: "HOBART", name: "Wash Impeller & Seal Kit", price: "$96.00", onSale: true, stock: "In Stock" },
+      { brand: "NORRIS", name: "Contactor 40A 240V Coil", price: "$64.50", onSale: false, stock: "In Stock" },
+      { brand: "ELECTROLUX", name: "Wash Tank Element 9kW", price: "$156.00", onSale: false, stock: "Low Stock" },
+      { brand: "FAGOR", name: "Detergent Dosing Pump", price: "$198.00", onSale: false, stock: "In Stock" },
+      { brand: "ESWOOD", name: "Door Micro Switch", price: "$27.30", onSale: false, stock: "In Stock" },
+      { brand: "WASHTECH", name: "Boiler Element 12kW", price: "$204.00", onSale: true, stock: "In Stock" }
+    ];
+    const products = Array.from({ length: 48 }, (_, i) => {
+      const b = baseProducts[i % baseProducts.length];
+      return {
+        ...b,
+        slotId: "cs-w-" + (i + 1),
+        href: W,
+        stockColor: b.stock === "In Stock" ? "#1f9d55" : "#e08a00"
+      };
+    });
+
+    const pages = [
+      { label: "‹" },
+      { label: "1", active: true },
+      { label: "2" },
+      { label: "3" },
+      { label: "›" }
+    ].map(pg => ({
+      label: pg.label,
+      bg: pg.active ? "#0f3a5f" : "#ffffff",
+      color: pg.active ? "#ffffff" : "#5b636b",
+      border: pg.active ? "#0f3a5f" : "#d7dbdf"
+    }));
+
+    const mk = (label, href, items) => ({ label, href, items: items.map(l => ({ label: l, href })) });
+    const megaCategories = [
+      mk("WASHING", "Catering Spares Washing Category.dc.html", ["Wash & Rinse Arms", "Pumps & Motors", "Elements", "Door Seals & Gaskets", "Dosing & Detergent", "Thermostats & Controls"]),
+      mk("PRE-RINSE & TAPWARE", "https://cateringspares.com.au/index.php/pre-rinse-units-and-tapware.html", ["Pre-Rinse Units", "Tapware & Mixers", "Hoses & Springs", "Spray Valves", "Wall Brackets"]),
+      mk("COOKING", "https://cateringspares.com.au/index.php/cooking.html", ["Gas Valves", "Thermocouples", "Pilots & Igniters", "Burners", "Control Knobs", "Elements"]),
+      mk("COMBI OVENS", "https://cateringspares.com.au/index.php/combi-ovens.html", ["Door Seals", "Motors & Fans", "Elements", "Sensors & Probes", "Control Boards", "Water Solenoids"]),
+      mk("BAIN MARIE", "https://cateringspares.com.au/category", ["Elements", "Thermostats", "Pans & Inserts", "Wet/Dry Kits"]),
+      mk("MIXERS & SLICERS", "https://cateringspares.com.au/category", ["Blades & Discs", "Bowls & Attachments", "Drive Gears", "Switches", "Safety Guards"]),
+      mk("REFRIGERATION", "https://cateringspares.com.au/category", ["Compressors", "Fan Motors", "Thermostats", "Door Gaskets", "Gas & Filters"])
+    ];
+
+    const density = this.props.catalogDensity ?? "comfortable";
+    const gridCols = density === "compact" ? "repeat(5, 1fr)" : density === "spacious" ? "repeat(3, 1fr)" : "repeat(4, 1fr)";
+    const cs = this.props.cardStyle ?? "bordered";
+    const cardBorder = cs === "elevated" ? "1px solid transparent" : cs === "flat" ? "1px solid #eceff1" : "1px solid #e4e7ea";
+    const cardShadow = cs === "elevated" ? "0 6px 20px rgba(20,23,26,0.1)" : cs === "flat" ? "none" : "0 1px 2px rgba(20,23,26,0.03)";
+    const cardHover = cs === "elevated" ? "box-shadow:0 16px 34px rgba(20,23,26,0.18);" : cs === "flat" ? "background:#f5f6f7;" : "border-color:#2c86cf; box-shadow:0 10px 24px rgba(20,23,26,0.1);";
+    const showStock = this.props.showStock ?? true;
+
+    const utilityLinks = [
+      { label: "My Account", href: "https://cateringspares.com.au/index.php/customer/account/" },
+      { label: "My Wishlist", href: "https://cateringspares.com.au/index.php/wishlist/" },
+      { label: "Checkout", href: "https://cateringspares.com.au/index.php/checkout/" },
+      { label: "Register", href: "https://cateringspares.com.au/index.php/customer/account/create/" },
+      { label: "News", href: "https://cateringspares.com.au/index.php/blog" }
+    ];
+    const navLinks = [
+      { label: "SHOP BY MANUFACTURER", href: "Catering Spares Manufacturer Page.dc.html", color: "#c7ccd1" },
+      { label: "SHOP BY CATEGORY", href: "https://cateringspares.com.au/category", color: "#c7ccd1" },
+      { label: "CATERING EQUIPMENT", href: "https://cateringspares.com.au/index.php/best-sellers.html", color: "#c7ccd1" }
+    ];
+    const footerInfoLinks = [
+      { label: "Home", href: "Catering Spares Homepage Redesign.dc.html" },
+      { label: "Site Map", href: "https://cateringspares.com.au/index.php/sitemap" },
+      { label: "Advanced Search", href: "https://cateringspares.com.au/index.php/catalogsearch/advanced/" },
+      { label: "Orders and Returns", href: "https://cateringspares.com.au/index.php/sales/guest/form/" },
+      { label: "Contact Us", href: "https://cateringspares.com.au/index.php/contact/" },
+      { label: "About Us", href: "https://cateringspares.com.au/index.php/about" },
+      { label: "Customer Service", href: "https://cateringspares.com.au/index.php/customer-service" },
+      { label: "Privacy Policy", href: "https://cateringspares.com.au/index.php/privacy-policy-cookie-restriction-mode" }
+    ];
+    const footerAccountLinks = [
+      { label: "Sign In", href: "https://cateringspares.com.au/index.php/customer/account/login/" },
+      { label: "View Cart", href: "https://cateringspares.com.au/index.php/checkout/cart/" },
+      { label: "My Wishlist", href: "https://cateringspares.com.au/index.php/wishlist/" },
+      { label: "Track My Order", href: "https://cateringspares.com.au/index.php/sales/guest/form/" }
+    ];
+
+    return { megaCategories, gridCols, cardBorder, cardShadow, cardHover, showStock, subCategories, brandFilters, products, pages, utilityLinks, navLinks, footerInfoLinks, footerAccountLinks, menuOpen, toggleMenu, closeMenu, drawerTransform, burgerVisibility };
+  }
+}
+</script>
+</body>
+</html>
