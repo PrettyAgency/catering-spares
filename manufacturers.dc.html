@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<style>
+  body { margin:0; background:#eef0f2; }
+  a { color:#1c6fb0; text-decoration:none; }
+  a:hover { color:#2c86cf; }
+  @media (max-width:760px) {
+    .cs-util-msg { display:none !important; }
+    .cs-util-bar { padding:8px 16px !important; gap:10px !important; }
+    .cs-header { padding:16px 16px !important; flex-wrap:wrap !important; gap:12px !important; }
+    .cs-header-actions { gap:16px !important; }
+    .cs-phone-label { display:none !important; }
+    .cs-nav { padding:10px 16px !important; }
+    .cs-nav-links { display:none !important; }
+    .cs-nav-burger { display:flex !important; }
+    .cs-nav-search { display:none !important; }
+    .cs-page-head { padding:32px 20px !important; }
+    .cs-page-head h1 { font-size:26px !important; }
+    .cs-brand-grid { grid-template-columns:1fr 1fr !important; padding:28px 20px 40px !important; }
+    .cs-az { padding:0 20px !important; flex-wrap:wrap !important; }
+    .cs-footer-grid { grid-template-columns:1fr !important; padding:36px 20px 20px !important; gap:28px !important; }
+    .cs-bottom-bar { padding:18px 20px !important; }
+  }
+  .cs-nav-burger { display:none; }
+  .cs-mega-panel { transition:opacity .18s ease, transform .18s ease, visibility .18s; }
+  .cs-mega-panel a:hover { color:#2c86cf; }
+  @media (max-width:1100px) {
+    .cs-brand-grid { grid-template-columns:repeat(3, 1fr) !important; }
+  }
+</style>
+<script src="image-slot.js"></script>
+</helmet>
+
+<div style="font-family:Arial, Helvetica, sans-serif; background:#eef0f2;">
+<div style="max-width:1440px; margin:0 auto; background:#ffffff; box-shadow:0 0 40px rgba(20,23,26,0.08);">
+
+  <!-- UTILITY BAR -->
+  <div class="cs-util-bar" style="background:#ffffff; border-bottom:1px solid #e2e5e8; padding:9px 40px; display:flex; align-items:center; justify-content:space-between; font-size:12px;">
+    <div style="display:flex; gap:20px;">
+      <sc-for list="{{ utilityLinks }}" as="l" hint-placeholder-count="5">
+        <a href="{{ l.href }}" style="color:#5b636b; font-size:12px;">{{ l.label }}</a>
+      </sc-for>
+    </div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <span class="cs-util-msg" style="color:#9aa2aa;">Welcome to our online store!</span>
+      <a href="#" style="color:#0f3a5f; font-weight:700;">Log in →</a>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="cs-header" style="background:#14171a; padding:22px 40px; display:flex; align-items:center; justify-content:space-between;">
+    <a href="index.dc.html" style="display:flex; align-items:center; gap:12px;">
+      <div style="width:40px; height:40px; border:2px solid #2c86cf; border-radius:8px; display:flex; align-items:center; justify-content:center; flex:none;">
+        <span style="color:#2c86cf; font-size:17px; font-weight:700;">CS</span>
+      </div>
+      <div style="line-height:1.15;">
+        <div style="color:#ffffff; font-size:20px; font-weight:700; letter-spacing:1.4px;">CATERING<span style="color:#2c86cf;">SPARES</span></div>
+        <div style="color:#78828c; font-size:10px; letter-spacing:2.2px; margin-top:2px;">GENUINE &amp; REPLACEMENT PARTS</div>
+      </div>
+    </a>
+    <div class="cs-header-actions" style="display:flex; align-items:center; gap:32px;">
+      <a href="tel:+61401511115" style="color:#ffffff; font-size:16px; font-weight:700; display:flex; align-items:center; gap:8px;">☎ <span class="cs-phone-label">0401 511 115</span></a>
+      <div style="display:flex; align-items:center; gap:8px; color:#ffffff; font-size:14px; font-weight:600;">
+        <div style="position:relative;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4"></circle><circle cx="19" cy="21" r="1.4"></circle><path d="M2 3h2l2.6 12.6a2 2 0 002 1.6h9a2 2 0 002-1.9L21 7H6"></path></svg>
+          <span style="position:absolute; top:-7px; right:-9px; background:#2c86cf; color:#fff; font-size:9.5px; font-weight:700; width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center;">0</span>
+        </div>
+        <span>CART</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="cs-nav" style="background:#1b1e22; padding:13px 40px; display:flex; align-items:center; justify-content:space-between;">
+    <div class="cs-nav-links" style="display:flex; align-items:center; gap:26px;">
+      <a href="manufacturers.dc.html" style="color:#c7ccd1; font-size:12px; font-weight:700; letter-spacing:1px;">SHOP BY MANUFACTURER</a>
+      <div class="cs-mega-wrap" style="position:relative;">
+        <a href="https://cateringspares.com.au/category" onclick="{{ toggleMega }}" style="color:#c7ccd1; font-size:12px; font-weight:700; letter-spacing:1px; display:flex; align-items:center; gap:6px; cursor:pointer;">SHOP BY CATEGORY <span style="font-size:8px; transform:{{ megaArrow }}; transition:transform .18s ease;">▼</span></a>
+        <div class="cs-mega-panel" style="position:absolute; top:100%; left:0; padding-top:14px; z-index:60; opacity:{{ megaOpacity }}; visibility:{{ megaVisibility }}; transform:{{ megaTransform }};">
+          <div style="width:920px; max-width:82vw; background:#ffffff; border-radius:14px; box-shadow:0 26px 64px rgba(11,13,16,0.3); padding:30px 32px;">
+            <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:28px 32px;">
+              <sc-for list="{{ megaCategories }}" as="c" hint-placeholder-count="7">
+                <div>
+                  <a href="{{ c.href }}" style="display:block; color:#14171a; font-size:13px; font-weight:800; letter-spacing:0.4px; margin-bottom:12px; padding-bottom:10px; border-bottom:2px solid #2c86cf;">{{ c.label }}</a>
+                  <div style="display:flex; flex-direction:column; gap:9px;">
+                    <sc-for list="{{ c.items }}" as="s" hint-placeholder-count="5">
+                      <a href="{{ s.href }}" style="color:#5b636b; font-size:12.5px; line-height:1.3;">{{ s.label }}</a>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="equipment.dc.html" style="color:#c7ccd1; font-size:12px; font-weight:700; letter-spacing:1px;">CATERING EQUIPMENT</a>
+    </div>
+    <div style="display:flex; align-items:center; gap:18px;">
+      <form action="https://cateringspares.com.au/index.php/catalogsearch/result/" method="get" class="cs-nav-search" style="display:flex; align-items:center; gap:6px; background:#ffffff; border:1px solid #ffffff; border-radius:8px; padding:0 4px 0 13px; height:38px; width:280px; box-shadow:0 2px 8px rgba(0,0,0,0.18);">
+        <input type="text" name="q" placeholder="Search parts, brands, models…" style="flex:1; min-width:0; background:transparent; border:none; outline:none; color:#14171a; font-size:12.5px;">
+        <button type="submit" aria-label="Search" style="background:#2c86cf; border:none; border-radius:6px; width:32px; height:30px; display:flex; align-items:center; justify-content:center; cursor:pointer; flex:none;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+        </button>
+      </form>
+      <button class="cs-nav-burger" onclick="{{ toggleMenu }}" aria-label="Toggle menu" style="display:none; align-items:center; justify-content:center; width:30px; height:30px; background:transparent; border:none; padding:0; cursor:pointer; flex-direction:column; gap:5px; position:relative; z-index:52; visibility:{{ burgerVisibility }};">
+        <span style="display:block; width:22px; height:2px; background:#c7ccd1;"></span>
+        <span style="display:block; width:22px; height:2px; background:#c7ccd1;"></span>
+        <span style="display:block; width:22px; height:2px; background:#c7ccd1;"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div style="position:fixed; inset:0; background:linear-gradient(160deg, #0b0d10 0%, #14171a 55%, #0f3a5f 140%); z-index:50; transform:{{ drawerTransform }}; transition:transform 0.35s cubic-bezier(.22,.9,.32,1); display:flex; flex-direction:column; overflow:hidden;">
+    <div style="position:absolute; top:-120px; right:-90px; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle, rgba(44,134,207,0.25) 0%, rgba(44,134,207,0) 70%); pointer-events:none;"></div>
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 24px; position:relative;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="width:34px; height:34px; border:2px solid #2c86cf; border-radius:8px; display:flex; align-items:center; justify-content:center;">
+          <span style="color:#2c86cf; font-size:14px; font-weight:700;">CS</span>
+        </div>
+        <span style="color:#ffffff; font-size:15px; font-weight:700; letter-spacing:1.2px;">CATERING<span style="color:#2c86cf;">SPARES</span></span>
+      </div>
+      <button onclick="{{ closeMenu }}" aria-label="Close menu" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:50%; width:36px; height:36px; color:#e5e8eb; font-size:20px; line-height:1; cursor:pointer;">×</button>
+    </div>
+    <div style="display:flex; flex-direction:column; padding:12px 28px; gap:2px; overflow-y:auto; flex:1;">
+      <sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="3">
+        <a href="{{ n.href }}" style="color:#ffffff; font-size:22px; font-weight:800; letter-spacing:0.2px; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:space-between;">{{ n.label }} <span style="color:#2c86cf; font-size:18px;">→</span></a>
+      </sc-for>
+      <div style="height:1px; background:rgba(255,255,255,0.08); margin:14px 0;"></div>
+      <sc-for list="{{ utilityLinks }}" as="l" hint-placeholder-count="5">
+        <a href="{{ l.href }}" style="color:#9aa2aa; font-size:14px; padding:11px 0;">{{ l.label }}</a>
+      </sc-for>
+    </div>
+    <div style="padding:22px 28px 30px; border-top:1px solid rgba(255,255,255,0.08);">
+      <a href="tel:+61401511115" style="color:#ffffff; font-size:19px; font-weight:800; display:flex; align-items:center; gap:10px;">☎ 0401 511 115</a>
+    </div>
+  </div>
+
+  <!-- BREADCRUMB -->
+  <div style="background:#ffffff; border-bottom:1px solid #eceff1; padding:14px 40px; font-size:12.5px; color:#9aa2aa;">
+    <a href="index.dc.html" style="color:#5b636b;">Home</a> <span style="margin:0 8px;">›</span> <span style="color:#14171a; font-weight:700;">Shop By Manufacturer</span>
+  </div>
+
+  <!-- PAGE HEAD -->
+  <div class="cs-page-head" style="position:relative; background:linear-gradient(120deg,#0b0d10 0%,#14171a 55%,#0f3a5f 130%); padding:52px 40px; overflow:hidden;">
+    <div style="position:absolute; top:-100px; right:-60px; width:320px; height:320px; border-radius:50%; background:radial-gradient(circle, rgba(44,134,207,0.22) 0%, rgba(44,134,207,0) 70%); pointer-events:none;"></div>
+    <div style="position:relative;">
+      <div style="color:#8fc3ea; font-size:11px; font-weight:800; letter-spacing:2.5px; margin-bottom:14px;">BROWSE ALL BRANDS</div>
+      <h1 style="color:#ffffff; font-size:34px; font-weight:800; letter-spacing:-0.3px; margin:0 0 14px;">Shop By Manufacturer</h1>
+      <p style="color:#aeb6bf; font-size:14.5px; line-height:1.7; max-width:640px; margin:0;">We stock genuine and replacement spare parts for all the leading commercial kitchen equipment brands. Select a manufacturer below to browse every part we carry for that brand.</p>
+    </div>
+  </div>
+
+  <!-- A-Z FILTER -->
+  <div class="cs-az" style="background:#f5f6f7; border-bottom:1px solid #eceff1; padding:0 40px; display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
+    <sc-for list="{{ azLetters }}" as="a" hint-placeholder-count="12">
+      <span style="color:{{ a.color }}; font-size:12.5px; font-weight:700; padding:14px 9px; cursor:default;">{{ a.letter }}</span>
+    </sc-for>
+  </div>
+
+  <!-- BRAND GRID -->
+  <div class="cs-brand-grid" style="background:#ffffff; padding:36px 40px 56px; display:grid; grid-template-columns:repeat(4, 1fr); gap:20px;">
+    <sc-for list="{{ manufacturers }}" as="b" hint-placeholder-count="16">
+      <a href="{{ b.href }}" style="position:relative; border:1px solid #e4e7ea; border-radius:12px; background:#ffffff; display:flex; flex-direction:column; overflow:hidden; transition:box-shadow 0.2s ease, border-color 0.2s ease; box-shadow:0 1px 2px rgba(20,23,26,0.03);" style-hover="border-color:#2c86cf; box-shadow:0 10px 24px rgba(20,23,26,0.1);">
+        <div style="height:110px; padding:22px 26px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid #f0f2f4;">
+          <image-slot id="{{ b.slotId }}" shape="rect" fit="contain" placeholder="{{ b.name }} logo" style="width:100%; height:100%; max-height:56px; display:block;"></image-slot>
+        </div>
+        <div style="padding:16px 20px; display:flex; align-items:center; justify-content:space-between;">
+          <span style="color:#14171a; font-size:14px; font-weight:700;">{{ b.name }}</span>
+          <span style="color:#9aa2aa; font-size:12px;">{{ b.count }} parts ›</span>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="cs-footer-grid" style="background:#0e1013; padding:50px 40px 30px; display:grid; grid-template-columns:1fr 1fr 1.4fr; gap:40px;">
+    <div>
+      <div style="color:#ffffff; font-size:13px; font-weight:700; letter-spacing:1.2px; margin-bottom:16px;">INFORMATION</div>
+      <div style="display:flex; flex-direction:column; gap:9px;">
+        <sc-for list="{{ footerInfoLinks }}" as="f" hint-placeholder-count="8">
+          <a href="{{ f.href }}" style="color:#c7ccd1; font-size:13px;">{{ f.label }}</a>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <div style="color:#ffffff; font-size:13px; font-weight:700; letter-spacing:1.2px; margin-bottom:16px;">MY ACCOUNT</div>
+      <div style="display:flex; flex-direction:column; gap:9px;">
+        <sc-for list="{{ footerAccountLinks }}" as="f" hint-placeholder-count="4">
+          <a href="{{ f.href }}" style="color:#c7ccd1; font-size:13px;">{{ f.label }}</a>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <div style="color:#ffffff; font-size:13px; font-weight:700; letter-spacing:1.2px; margin-bottom:16px;">NEWSLETTER</div>
+      <div style="color:#8992a0; font-size:13px; line-height:1.6; margin-bottom:16px;">Subscribe to the Catering Spares mailing list to receive updates on new arrivals, special offers and other discount information.</div>
+      <div style="display:flex; gap:10px;">
+        <input type="email" placeholder="Your e-mail" style="flex:1; background:#1b1e22; border:1px solid #33393f; border-radius:7px; padding:11px 14px; color:#ffffff; font-size:13px;">
+        <a href="#" style="background:#2c86cf; color:#ffffff; font-size:12px; font-weight:700; letter-spacing:0.6px; padding:11px 20px; border-radius:7px; white-space:nowrap;">SUBSCRIBE</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="cs-bottom-bar" style="background:#0e1013; border-top:1px solid #24282d; padding:22px 40px; display:flex; align-items:center; justify-content:space-between;">
+    <div style="display:flex; align-items:center; gap:9px;">
+      <div style="width:26px; height:26px; border:1.5px solid #2c86cf; border-radius:6px; display:flex; align-items:center; justify-content:center;">
+        <span style="color:#2c86cf; font-size:11px; font-weight:700;">CS</span>
+      </div>
+      <span style="color:#5c6570; font-size:12px;">© 2026 Catering Spares. All rights reserved.</span>
+    </div>
+    <button style="width:34px; height:34px; border-radius:50%; border:1px solid #33393f; background:transparent; color:#78828c; font-size:14px; cursor:pointer;">↑</button>
+  </div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { menuOpen: false };
+  renderVals() {
+    const menuOpen = this.state.menuOpen;
+    const toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+    const closeMenu = () => this.setState({ menuOpen: false });
+    const drawerTransform = menuOpen ? "translateX(0)" : "translateX(100%)";
+    const burgerVisibility = menuOpen ? "hidden" : "visible";
+    const megaOpen = !!this.state.megaOpen;
+    const toggleMega = (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState(s => ({ megaOpen: !s.megaOpen })); };
+    const megaOpacity = megaOpen ? 1 : 0;
+    const megaVisibility = megaOpen ? "visible" : "hidden";
+    const megaTransform = megaOpen ? "translateY(0)" : "translateY(8px)";
+    const megaArrow = megaOpen ? "rotate(180deg)" : "none";
+
+    const M = "https://cateringspares.com.au/manufacturer";
+    const manufacturers = [
+      { name: "Bracton",    slotId: "cs-mf-bracton",    count: 42,  href: M },
+      { name: "Convotherm", slotId: "cs-mf-convotherm", count: 118, href: M },
+      { name: "Electrolux", slotId: "cs-mf-electrolux", count: 96,  href: M },
+      { name: "Eswood",     slotId: "cs-mf-eswood",     count: 214, href: M },
+      { name: "Fagor",      slotId: "cs-mf-fagor",      count: 87,  href: M },
+      { name: "Goldstein",  slotId: "cs-mf-goldstein",  count: 63,  href: M },
+      { name: "Hobart",     slotId: "cs-mf-hobart",     count: 176, href: M },
+      { name: "Meiko",      slotId: "cs-mf-meiko",      count: 51,  href: M },
+      { name: "Moffat",     slotId: "cs-mf-moffat",     count: 74,  href: M },
+      { name: "Norris",     slotId: "cs-mf-norris",     count: 89,  href: M },
+      { name: "Rational",   slotId: "cs-mf-rational",   count: 132, href: M },
+      { name: "Robot Coupe",slotId: "cs-mf-robotcoupe", count: 45,  href: M },
+      { name: "Starline",   slotId: "cs-mf-starline",   count: 58,  href: M },
+      { name: "Waldorf",    slotId: "cs-mf-waldorf",    count: 67,  href: M },
+      { name: "Washtech",   slotId: "cs-mf-washtech",   count: 149, href: M },
+      { name: "Winterhalter",slotId:"cs-mf-winterhalter",count: 71, href: M }
+    ];
+    const active = new Set(manufacturers.map(m => m.name[0].toUpperCase()));
+    const azLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(letter => ({
+      letter,
+      color: active.has(letter) ? "#2c86cf" : "#c4cad0"
+    }));
+
+    const mk = (label, href, items) => ({ label, href, items: items.map(l => ({ label: l, href })) });
+    const megaCategories = [
+      mk("WASHING", "washing.dc.html", ["Wash & Rinse Arms", "Pumps & Motors", "Elements", "Door Seals & Gaskets", "Dosing & Detergent", "Thermostats & Controls"]),
+      mk("PRE-RINSE & TAPWARE", "https://cateringspares.com.au/index.php/pre-rinse-units-and-tapware.html", ["Pre-Rinse Units", "Tapware & Mixers", "Hoses & Springs", "Spray Valves", "Wall Brackets"]),
+      mk("COOKING", "https://cateringspares.com.au/index.php/cooking.html", ["Gas Valves", "Thermocouples", "Pilots & Igniters", "Burners", "Control Knobs", "Elements"]),
+      mk("COMBI OVENS", "https://cateringspares.com.au/index.php/combi-ovens.html", ["Door Seals", "Motors & Fans", "Elements", "Sensors & Probes", "Control Boards", "Water Solenoids"]),
+      mk("BAIN MARIE", "https://cateringspares.com.au/category", ["Elements", "Thermostats", "Pans & Inserts", "Wet/Dry Kits"]),
+      mk("MIXERS & SLICERS", "https://cateringspares.com.au/category", ["Blades & Discs", "Bowls & Attachments", "Drive Gears", "Switches", "Safety Guards"]),
+      mk("REFRIGERATION", "https://cateringspares.com.au/category", ["Compressors", "Fan Motors", "Thermostats", "Door Gaskets", "Gas & Filters"])
+    ];
+
+    const utilityLinks = [
+      { label: "My Account", href: "https://cateringspares.com.au/index.php/customer/account/" },
+      { label: "My Wishlist", href: "https://cateringspares.com.au/index.php/wishlist/" },
+      { label: "Checkout", href: "https://cateringspares.com.au/index.php/checkout/" },
+      { label: "Register", href: "https://cateringspares.com.au/index.php/customer/account/create/" },
+      { label: "News", href: "https://cateringspares.com.au/index.php/blog" }
+    ];
+    const navLinks = [
+      { label: "SHOP BY MANUFACTURER", href: "https://cateringspares.com.au/manufacturer", color: "#ffffff" },
+      { label: "SHOP BY CATEGORY", href: "https://cateringspares.com.au/category", color: "#c7ccd1" },
+      { label: "CATERING EQUIPMENT", href: "https://cateringspares.com.au/index.php/best-sellers.html", color: "#c7ccd1" }
+    ];
+    const footerInfoLinks = [
+      { label: "Home", href: "index.dc.html" },
+      { label: "Site Map", href: "https://cateringspares.com.au/index.php/sitemap" },
+      { label: "Advanced Search", href: "https://cateringspares.com.au/index.php/catalogsearch/advanced/" },
+      { label: "Orders and Returns", href: "https://cateringspares.com.au/index.php/sales/guest/form/" },
+      { label: "Contact Us", href: "https://cateringspares.com.au/index.php/contact/" },
+      { label: "About Us", href: "about.dc.html" },
+      { label: "Customer Service", href: "https://cateringspares.com.au/index.php/customer-service" },
+      { label: "Privacy Policy", href: "https://cateringspares.com.au/index.php/privacy-policy-cookie-restriction-mode" }
+    ];
+    const footerAccountLinks = [
+      { label: "Sign In", href: "https://cateringspares.com.au/index.php/customer/account/login/" },
+      { label: "View Cart", href: "https://cateringspares.com.au/index.php/checkout/cart/" },
+      { label: "My Wishlist", href: "https://cateringspares.com.au/index.php/wishlist/" },
+      { label: "Track My Order", href: "https://cateringspares.com.au/index.php/sales/guest/form/" }
+    ];
+
+    return { megaOpen, toggleMega, megaOpacity, megaVisibility, megaTransform, megaArrow, megaCategories, manufacturers, azLetters, utilityLinks, navLinks, footerInfoLinks, footerAccountLinks, menuOpen, toggleMenu, closeMenu, drawerTransform, burgerVisibility };
+  }
+}
+</script>
+</body>
+</html>
